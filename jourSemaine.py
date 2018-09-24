@@ -1,3 +1,4 @@
+#On import le module sys pour fermer le programme si l'utilisateur le souhaite
 import sys
 
 #On définit les variables annee / mois / jour en tant qu'entier
@@ -115,12 +116,16 @@ def anneeMoisJour():
     print("")
     choix = print("Souhaitez-vous entrer une nouvelle date ? Oui/Non")
     choix = input()
-    
+
+    #On crée une boucle pour limiter les erreurs de saisie
     while (choix != "Oui") or (choix != "Non"):
         if choix == "Oui":
+            #Si l'utilisateur répond oui pour choisir une nouvelle date, on relance le programme
                 anneeMoisJour()
         elif choix == "Non":
+            #Si l'utilisateur répond non et n'a plus de date à rentrer, on ferme le programme
                 sys.exit()
+                
         print("Votre choix n'est pas valide !")
         print("Souhaitez-vous entrer une nouvelle date ? Oui / Non")
         choix = input()
