@@ -1,21 +1,20 @@
-#On import le module sys pour fermer le programme si l'utilisateur le souhaite
+#Module sys pour fermer le programme à la demande
 import sys
 
-#On définit les variables annee / mois / jour en tant qu'entier
+#Variables annee / mois / jour en tant qu'entier
 annee = int(0)  # Annee en entier
 mois = int(0)  # Mois en entier
 jour = int(0)  # Jour en entier
 
-#On crée la fonction pour obtenir le jour de la semaine d'une date X
+#Fonction pour obtenir le jour de la semaine d'une date X
 def anneeMoisJour():
     # Recuperation des variables de la date entrée par l'utilisateur
     annee = int(input("Merci d'entrer l'année : "))
     mois = int(input("Merci d'entrer le mois (en chiffres) : "))
     jour = int(input("Merci d'entrer le jour : "))
 
-    #On crée une boucle, tant que l'année est inférieur a 1581, ou différent de Octobre 1582 et un mois supérieur & 12 et jour supérieur a 31
-    #Pour limiter les erreurs de saisie et le date du minimum (Octobre 1582) pour le bon fonctionnement de l'algorithme.
-    #Ainsi, l'utilisateur est invité à resaisir les informations nécessaires jusqu'à ce qu'elles soient correctes.
+    #Boucle, tant que l'année est inférieur/égal a 1581, ou différent de Octobre 1582 et un mois supérieur & 12 et jour supérieur a 31
+    #Pour limiter les erreurs de saisie et le date du minimum (Octobre 1582)
     while (annee <= int(1581)) or (annee == int(1582) and mois < int(11)) or (mois > 12) or (jour > 31):
         print("")
         print("La date est invalide")
@@ -23,25 +22,23 @@ def anneeMoisJour():
         mois = int(input("Merci d'entrer le mois (en chiffres) : "))
         jour = int(input("Merci d'entrer le jour : "))
 
-    # On récupèrer les deux derniers chiffres de l'année dans la variable anneeDeux, on type en string /
-    # / On récupère les deux dernières valeur de l'année / on retype entier
+    #Deux derniers chiffres de l'année dans variable anneeDeux, type en string / récupère les deux dernières valeur de l'année / retype entier
     anneeDeux = str(annee)
     anneeDeux = anneeDeux[2:4]
     anneeDeux = int(anneeDeux)
 
-    # On divise par 4 la valeur d'anneeDeux qu'on met dans la variable somme, on change le type de somme en typant en string / on garde que la valeur entière / typant entier
-    #Puis on ajoute la valeur d'anneeDeux + la somme dans la variable somme
+    #Divise par 4 la valeur d'anneeDeux dans somme, somme en type string / on garde que la valeur entière / type entier
+    #Valeur d'anneeDeux + somme dans somme
     somme = anneeDeux / int(4)
     somme = str(somme)
     somme = somme[0:2]
     somme = int(somme)
     somme = anneeDeux + somme
 
-    # On ajoute a la variable somme, sa propre valeur et celle du jour
+    #Ajout valeur du jour dans somme
     somme = somme + jour
 
-    # On analyse à quoi correspond le mois pour ajouter ajouter à somme la valeur équivalente
-    # + 1 pour le mois de janvier / + 3 pour le mois de février ....
+    #Analyse du mois pour ajouter ajouter à somme la valeur équivalente + 1 pour le mois de janvier / + 3 pour le mois de février ....
     if mois == 1:  # Janvier
         somme = somme + 0
     elif mois == 2:  # Février
@@ -67,16 +64,16 @@ def anneeMoisJour():
     elif mois == 12:  # Decembre
         somme = somme + 5
 
-    # Si c'est une annee Bissextile ET (mois de Janvier OU mois de Février), on retire 1 à la somme
+    #Si annee Bissextile ET (mois de Janvier OU mois de Février), -1 a somme
     if (annee % 400 == 0) and (mois == 1 or mois == 2):
         somme = somme - 1
 
-    # On  type en string / on récupère les 2 premiers valeur / on retype en entier
+    #Type string / 2 premieres valeurs / retype entier
     anneeSiecle = str(annee)
     anneeSiecle = anneeSiecle[0:2]
     anneeSiecle = int(anneeSiecle)
 
-    # La valeur d'anneeSiecle permet d'ajouter une valeur correspondante à la variable somme
+    #anneeSiecle permet d'ajouter une valeur correspondante à somme
     if anneeSiecle == 16:  # + 6 si c'est dans les 1600
         somme = somme + 6
     elif anneeSiecle == 17:  # + 4 si c'est dans les 1700
@@ -90,10 +87,10 @@ def anneeMoisJour():
     elif anneeSiecle == 21:  # + 4 si c'est dans les 2100
         somme = somme + 4
 
-    # On divise la somme par 7, on met cette valeur dans une nouvelle variable, "valeurJour"
+    #Divise la somme par 7, dans une nouvelle variable "valeurJour"
     valeurJour = somme % 7
 
-    #La nouvelle valeur dans la variable "valeurJour" permet de déterminer le jour de la semaine de la date entrée par l'utilisateur
+    #"valeurJour" permet de déterminer le jour de la semaine de la date entrée par l'utilisateur
     if valeurJour == 0:  # 0 = Dimanche
         leJour = "dimanche"
     if valeurJour == 1:  # 1 = Lundi
@@ -109,7 +106,7 @@ def anneeMoisJour():
     if valeurJour == 6:  # 6 = Samedi
         leJour = "samedi"
 
-    #On renvoit la date de l'utilisateur et le jour de la semaine a l'aide de la varibale leJour
+    #Renvoit la date de l'utilisateur et le jour de la semaine a l'aide de la varibale leJour
     print("Votre date du ", jour, "/", mois, "/", annee, " est un ", leJour)
 
     #On relance le programme si l'utilisateur souhaite entrer une nouvelle date
