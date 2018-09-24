@@ -1,3 +1,5 @@
+import sys
+
 #On définit les variables annee / mois / jour en tant qu'entier
 annee = int(0)  # Annee en entier
 mois = int(0)  # Mois en entier
@@ -13,7 +15,7 @@ def anneeMoisJour():  #On crée la fonction pour obtenir le jour de la semaine d
     #On crée une boucle, tant que l'année est inférieur a 1581, ou différent de Octobre 1582 et un mois supérieur & 12 et jour supérieur a 31
     #Pour limiter les erreurs de saisie et le date du minimum (Octobre 1582) pour le bon fonctionnement de l'algorithme.
     #Ainsi, l'utilisateur est invité à resaisir les informations nécessaires jusqu'à ce qu'elles soient correctes.
-    while (annee < int(1581)) or (annee == int(1582) and mois < int(11)) or (mois > 12) or (jour > 31):
+    while (annee <= int(1581)) or (annee == int(1582) and mois < int(11)) or (mois > 12) or (jour > 31):
         print("")
         print("La date est invalide")
         annee = int(input("Merci d'entrer l'année : "))
@@ -107,7 +109,22 @@ def anneeMoisJour():  #On crée la fonction pour obtenir le jour de la semaine d
         leJour = "samedi"
 
     #On renvoit la date de l'utilisateur et le jour de la semaine a l'aide de la varibale leJour
-    print("Votre date du ", jour, "/", mois, "/", annee, " était un ", leJour)
+    print("Votre date du ", jour, "/", mois, "/", annee, " est un ", leJour)
 
-
+    #On relance le programme si l'utilisateur souhaite entrer une nouvelle date
+    print("")
+    choix = print("Souhaitez-vous entrer une nouvelle date ? Oui/Non")
+    choix = input()
+    
+    while (choix != "Oui") or (choix != "Non"):
+        if choix == "Oui":
+                anneeMoisJour()
+        elif choix == "Non":
+                sys.exit()
+        print("Votre choix n'est pas valide !")
+        print("Souhaitez-vous entrer une nouvelle date ? Oui / Non")
+        choix = input()
+    #ATTENTION, ici probleme, les 3 dernières lignes sont en haut !
+    #Seul moyen pour que cela fonctionne correctement
+        
 anneeMoisJour()
