@@ -5,8 +5,8 @@ annee = int(0)  # Annee en entier
 mois = int(0)  # Mois en entier
 jour = int(0)  # Jour en entier
 
-
-def anneeMoisJour():  #On crée la fonction pour obtenir le jour de la semaine d'une date X
+#On crée la fonction pour obtenir le jour de la semaine d'une date X
+def anneeMoisJour():
     # Recuperation des variables de la date entrée par l'utilisateur
     annee = int(input("Merci d'entrer l'année : "))
     mois = int(input("Merci d'entrer le mois (en chiffres) : "))
