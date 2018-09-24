@@ -27,11 +27,8 @@ def anneeMoisJour():
     anneeDeux = anneeDeux[2:4]
     anneeDeux = int(anneeDeux)
 
-    #Divise par 4 la valeur d'anneeDeux dans somme, somme en type string / on garde que la valeur entière / type entier
-    #Valeur d'anneeDeux + somme dans somme
+    #Divise par 4 la valeur d'anneeDeux dans somme,(anneeDeux + somme) dans somme
     somme = anneeDeux / int(4)
-    somme = str(somme)
-    somme = somme[0:2]
     somme = int(somme)
     somme = anneeDeux + somme
 
